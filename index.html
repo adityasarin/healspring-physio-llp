@@ -463,10 +463,10 @@ tailwind.config = {
        style="background: radial-gradient(circle, rgba(245,158,11,.18) 0%, transparent 70%)"></div>
 
   <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36 w-full">
-    <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 items-center">
 
       <!-- Left -->
-      <div class="lg:col-span-3" data-aos="fade-right" data-aos-duration="900">
+      <div class="lg:col-span-3" data-aos="fade-up" data-aos-duration="900">
         <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-7 max-w-full">
           <span class="w-2 h-2 rounded-full bg-hs-cyan animate-pulse flex-shrink-0"></span>
           <span class="text-white/80 text-[11px] sm:text-sm font-medium">Certified Medical Equipment Distributor · Pan-India</span>
@@ -484,22 +484,19 @@ tailwind.config = {
         </p>
 
         <!-- Stats -->
-        <div class="flex flex-wrap gap-6 mb-10">
+        <div class="grid grid-cols-2 sm:flex sm:flex-wrap sm:gap-6 gap-x-6 gap-y-4 mb-10">
           <div>
             <div class="text-3xl font-bold font-display text-white">8<span class="text-hs-cyan">+</span></div>
             <div class="text-xs text-white/50 mt-0.5 font-medium">Years Experience</div>
           </div>
-          <div class="w-px bg-white/15 self-stretch"></div>
           <div>
             <div class="text-3xl font-bold font-display text-white">6</div>
             <div class="text-xs text-white/50 mt-0.5 font-medium">Global Brands</div>
           </div>
-          <div class="w-px bg-white/15 self-stretch"></div>
           <div>
             <div class="text-3xl font-bold font-display text-white">140<span class="text-hs-cyan">+</span></div>
             <div class="text-xs text-white/50 mt-0.5 font-medium">Countries Served</div>
           </div>
-          <div class="w-px bg-white/15 self-stretch"></div>
           <div>
             <div class="text-2xl font-bold font-display text-white">Pan-India</div>
             <div class="text-xs text-white/50 mt-0.5 font-medium">Coverage</div>
@@ -520,7 +517,7 @@ tailwind.config = {
       </div>
 
       <!-- Right – Swiper -->
-      <div class="lg:col-span-2" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+      <div class="lg:col-span-2" data-aos="fade-up" data-aos-duration="900" data-aos-delay="150">
         <div class="relative">
           <div class="swiper hero-swiper rounded-2xl overflow-hidden shadow-2xl shadow-black/60 border border-white/10">
             <div class="swiper-wrapper">
@@ -1446,16 +1443,16 @@ document.addEventListener('alpine:init', () => {
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 
 <script>
-window.addEventListener('load', () => {
-  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
+document.addEventListener('DOMContentLoaded', () => {
   new Swiper('.hero-swiper', {
     loop: true,
-    effect: 'fade',
-    fadeEffect: { crossFade: true },
     autoplay: { delay: 3800, disableOnInteraction: false },
     pagination: { el: '.swiper-pagination', clickable: true },
-    speed: 800,
+    speed: 700,
   });
+});
+window.addEventListener('load', () => {
+  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
 });
 </script>
 
