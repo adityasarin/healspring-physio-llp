@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healspring Physio LLP — Premium Physiotherapy Equipment | Pan-India</title>
+<meta name="description" content="Healspring Physio LLP distributes world-class physiotherapy equipment from Zimmer, CSMI, Verity Medical, Baseline, Sensmove & Doctor Life across India.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy: '#0C1A2E',
+        'hs-blue': '#1570C4',
+        'hs-cyan': '#2EAFC5',
+        'hs-gold': '#F59E0B',
+      },
+      fontFamily: {
+        display: ['Plus Jakarta Sans', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+      }
+    }
+  }
+}
+</script>
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  h1,h2,h3,h4,h5,h6 { font-family: 'Plus Jakarta Sans', sans-serif; }
+  [x-cloak] { display: none !important; }
+
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .ticker-track { animation: ticker-scroll 28s linear infinite; display: flex; width: max-content; }
+  .ticker-track:hover { animation-play-state: paused; }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.25; transform: scale(1); }
+    50%       { opacity: 0.55; transform: scale(1.12); }
+  }
+  .orb1 { animation: pulse-glow 9s ease-in-out infinite; }
+  .orb2 { animation: pulse-glow 13s ease-in-out infinite reverse; }
+  .orb3 { animation: pulse-glow 7s ease-in-out infinite; animation-delay: 3s; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-8px); }
+  }
+  .float-badge { animation: float 5s ease-in-out infinite; }
+
+  .nav-glass { backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #1570C4 0%, #2EAFC5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-clip { clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%); }
+
+  .card-lift { transition: transform .25s ease, box-shadow .25s ease; }
+  .card-lift:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(21,112,196,.14); }
+
+  .brand-card { border-bottom: 3px solid transparent; transition: border-color .25s, transform .25s; }
+  .brand-card:hover { border-bottom-color: #1570C4; transform: translateY(-3px); }
+
+  .swiper-pagination-bullet-active { background: #2EAFC5 !important; }
+
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(21,112,196,.18);
+    border-color: #1570C4;
+  }
+</style>
+</head>
+
+<body class="bg-white text-gray-900 antialiased" x-data="appData()" @scroll.window="scrolled = window.scrollY > 50">
+
+<!-- ============================================================
+     DEMO REQUEST MODAL
+     ============================================================ -->
+<div x-show="modalOpen" x-cloak class="fixed inset-0 z-[100] flex items-center justify-center p-4"
+     @keydown.escape.window="modalOpen = false">
+  <div class="absolute inset-0 bg-navy/80 backdrop-blur-sm" @click="modalOpen = false"></div>
+  <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-xl max-h-[90vh] overflow-y-auto"
+       x-transition:enter="transition ease-out duration-300"
+       x-transition:enter-start="opacity-0 scale-95"
+       x-transition:enter-end="opacity-100 scale-100"
+       x-transition:leave="transition ease-in duration-200"
+       x-transition:leave-start="opacity-100 scale-100"
+       x-transition:leave-end="opacity-0 scale-95">
+    <div x-show="!modalSuccess">
+      <div class="flex items-start justify-between p-6 border-b border-gray-100">
+        <div>
+          <h3 class="text-xl font-bold text-navy">Request a Free Demo</h3>
+          <p class="text-sm text-gray-400 mt-0.5">Our team will reach out within 24 hours</p>
+        </div>
+        <button @click="modalOpen = false" class="text-gray-300 hover:text-gray-500 transition p-1 mt-0.5">
+          <i class="fas fa-times text-lg"></i>
+        </button>
+      </div>
+      <form @submit.prevent="submitDemo()" class="p-6 space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Full Name *</label>
+            <input x-model="demo.name" type="text" required placeholder="Dr. Ravi Sharma"
+                   class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm transition">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Clinic / Hospital *</label>
+            <input x-model="demo.clinic" type="text" required placeholder="Apollo Physio Centre"
+                   class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm transition">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Your Role *</label>
+            <select x-model="demo.role" required class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm bg-white transition">
+              <option value="">Select Role</option>
+              <option>Physiotherapist</option>
+              <option>Orthopedic Surgeon</option>
+              <option>Sports Medicine Doctor</option>
+              <option>Neurologist</option>
+              <option>Clinic Owner</option>
+              <option>Hospital Administrator</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">City *</label>
+            <input x-model="demo.city" type="text" required placeholder="Mumbai"
+                   class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm transition">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Email *</label>
+            <input x-model="demo.email" type="email" required placeholder="doctor@clinic.com"
+                   class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm transition">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Phone *</label>
+            <input x-model="demo.phone" type="tel" required placeholder="+91 98765 43210"
+                   class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm transition">
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Equipment Interest</label>
+          <div class="grid grid-cols-2 gap-y-2 gap-x-4">
+            <template x-for="item in equipInterests">
+              <label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer select-none">
+                <input type="checkbox" :value="item" x-model="demo.interests"
+                       class="w-4 h-4 rounded accent-hs-blue">
+                <span x-text="item"></span>
+              </label>
+            </template>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Message</label>
+          <textarea x-model="demo.message" rows="3"
+                    placeholder="Tell us about your clinic and equipment needs…"
+                    class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm resize-none transition"></textarea>
+        </div>
+        <button type="submit"
+                class="w-full bg-hs-blue hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition font-display shadow-lg shadow-blue-200 text-sm">
+          Submit Request &nbsp;<i class="fas fa-arrow-right"></i>
+        </button>
+      </form>
+    </div>
+    <div x-show="modalSuccess" class="py-16 px-8 text-center">
+      <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5 ring-4 ring-green-100">
+        <i class="fas fa-check text-green-500 text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-navy mb-2">Request Received!</h3>
+      <p class="text-gray-500 mb-6">Our team will contact you within 24 hours to schedule your demo.</p>
+      <button @click="modalOpen = false; modalSuccess = false"
+              class="bg-hs-blue text-white font-semibold px-8 py-2.5 rounded-xl hover:bg-blue-700 transition">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PRODUCT DETAIL MODAL
+     ============================================================ -->
+<div x-show="productModal" x-cloak class="fixed inset-0 z-[90] flex items-center justify-center p-4"
+     @keydown.escape.window="productModal = false">
+  <div class="absolute inset-0 bg-navy/80 backdrop-blur-sm" @click="productModal = false"></div>
+  <div x-show="activeProduct"
+       class="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden"
+       x-transition:enter="transition ease-out duration-300"
+       x-transition:enter-start="opacity-0 scale-95"
+       x-transition:enter-end="opacity-100 scale-100">
+    <template x-if="activeProduct">
+      <div>
+        <div class="relative">
+          <img :src="activeProduct.img" :alt="activeProduct.name"
+               class="w-full h-64 object-cover">
+          <button @click="productModal = false"
+                  class="absolute top-3 right-3 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-gray-600 hover:bg-white transition shadow">
+            <i class="fas fa-times text-sm"></i>
+          </button>
+          <div class="absolute bottom-3 left-4">
+            <span class="text-xs font-bold text-white px-3 py-1 rounded-full shadow"
+                  :style="`background: ${activeProduct.color}`"
+                  x-text="activeProduct.cat"></span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display font-bold text-navy text-xl mb-1" x-text="activeProduct.name"></h3>
+          <p class="text-gray-500 text-sm mb-4" x-text="activeProduct.desc"></p>
+          <div class="bg-slate-50 rounded-xl p-4 mb-5 grid sm:grid-cols-2 gap-x-4 gap-y-2">
+            <template x-for="s in activeProduct.specs">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-check-circle text-hs-cyan text-sm flex-shrink-0"></i>
+                <span class="text-sm text-gray-700" x-text="s"></span>
+              </div>
+            </template>
+          </div>
+          <div class="flex gap-3">
+            <button @click="productModal = false; modalOpen = true"
+                    class="flex-1 bg-hs-blue hover:bg-blue-700 text-white font-bold py-2.5 rounded-xl transition font-display text-sm shadow-lg shadow-blue-100">
+              <i class="fas fa-calendar-check mr-1.5"></i>Request Demo
+            </button>
+            <button @click="productModal = false"
+                    class="px-5 py-2.5 border border-gray-200 text-gray-600 rounded-xl hover:bg-gray-50 transition text-sm">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</div>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+     :class="scrolled ? 'bg-white/95 nav-glass shadow-sm' : 'bg-transparent'">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-2.5 flex-shrink-0">
+        <div class="w-8 h-8 rounded-lg flex items-center justify-center"
+             style="background: linear-gradient(135deg,#1570C4,#2EAFC5)">
+          <i class="fas fa-heartbeat text-white text-sm"></i>
+        </div>
+        <div class="leading-none">
+          <span class="font-display font-bold text-lg gradient-text">Healspring</span>
+          <span class="block text-[10px] font-medium"
+                :class="scrolled ? 'text-gray-400' : 'text-blue-200'">Physio LLP</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#products"  class="text-sm font-medium transition hover:text-hs-blue" :class="scrolled ? 'text-gray-600' : 'text-white/85'">Products</a>
+        <a href="#brands"    class="text-sm font-medium transition hover:text-hs-blue" :class="scrolled ? 'text-gray-600' : 'text-white/85'">Brands</a>
+        <a href="#why-us"    class="text-sm font-medium transition hover:text-hs-blue" :class="scrolled ? 'text-gray-600' : 'text-white/85'">Why Us</a>
+        <a href="#team"      class="text-sm font-medium transition hover:text-hs-blue" :class="scrolled ? 'text-gray-600' : 'text-white/85'">Team</a>
+        <a href="#contact"   class="text-sm font-medium transition hover:text-hs-blue" :class="scrolled ? 'text-gray-600' : 'text-white/85'">Contact</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button @click="modalOpen = true"
+                class="hidden sm:inline-flex items-center gap-2 bg-hs-blue hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition shadow-lg shadow-blue-900/30">
+          <i class="fas fa-calendar-check text-xs"></i> Request Demo
+        </button>
+        <button @click="mobileOpen = !mobileOpen" class="md:hidden p-2 rounded-lg transition"
+                :class="scrolled ? 'text-gray-700' : 'text-white'">
+          <i class="fas text-lg" :class="mobileOpen ? 'fa-times' : 'fa-bars'"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div x-show="mobileOpen" x-cloak
+       x-transition:enter="transition ease-out duration-200"
+       x-transition:enter-start="opacity-0 -translate-y-2"
+       x-transition:enter-end="opacity-100 translate-y-0"
+       class="md:hidden bg-white border-t border-gray-100 shadow-xl">
+    <div class="px-5 py-4 space-y-1">
+      <a href="#products" @click="mobileOpen=false" class="block py-2.5 text-gray-700 font-medium border-b border-gray-50 hover:text-hs-blue transition">Products</a>
+      <a href="#brands"   @click="mobileOpen=false" class="block py-2.5 text-gray-700 font-medium border-b border-gray-50 hover:text-hs-blue transition">Brands</a>
+      <a href="#why-us"   @click="mobileOpen=false" class="block py-2.5 text-gray-700 font-medium border-b border-gray-50 hover:text-hs-blue transition">Why Us</a>
+      <a href="#team"     @click="mobileOpen=false" class="block py-2.5 text-gray-700 font-medium border-b border-gray-50 hover:text-hs-blue transition">Team</a>
+      <a href="#contact"  @click="mobileOpen=false" class="block py-2.5 text-gray-700 font-medium hover:text-hs-blue transition">Contact</a>
+      <button @click="modalOpen=true; mobileOpen=false"
+              class="w-full mt-3 bg-hs-blue text-white font-bold py-3 rounded-xl transition hover:bg-blue-700">
+        Request a Demo
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section id="home" class="relative min-h-screen bg-navy hero-clip flex items-center overflow-hidden">
+  <!-- Animated orbs -->
+  <div class="absolute top-1/4 left-1/5 w-[500px] h-[500px] rounded-full orb1 pointer-events-none"
+       style="background: radial-gradient(circle, rgba(21,112,196,.45) 0%, transparent 70%)"></div>
+  <div class="absolute bottom-1/3 right-1/5 w-96 h-96 rounded-full orb2 pointer-events-none"
+       style="background: radial-gradient(circle, rgba(46,175,197,.35) 0%, transparent 70%)"></div>
+  <div class="absolute top-2/3 left-1/2 w-72 h-72 rounded-full orb3 pointer-events-none"
+       style="background: radial-gradient(circle, rgba(245,158,11,.18) 0%, transparent 70%)"></div>
+
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36 w-full">
+    <div class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+
+      <!-- Left -->
+      <div class="lg:col-span-3" data-aos="fade-right" data-aos-duration="900">
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-7">
+          <span class="w-2 h-2 rounded-full bg-hs-cyan animate-pulse"></span>
+          <span class="text-white/80 text-sm font-medium">Certified Medical Equipment Distributor &nbsp;·&nbsp; Pan-India</span>
+        </div>
+
+        <h1 class="font-display font-extrabold text-white leading-[1.12] mb-5"
+            style="font-size: clamp(2.1rem, 4.5vw, 3.75rem)">
+          Premium Physiotherapy<br>
+          <span class="gradient-text">Equipment</span> for<br>
+          Modern Clinics
+        </h1>
+
+        <p class="text-white/65 text-lg leading-relaxed mb-9 max-w-lg">
+          Partnering with India's physiotherapists, rehabilitation centres, and sports medicine professionals to deliver world-class equipment from <span class="text-hs-cyan font-semibold">6 global leaders</span>.
+        </p>
+
+        <!-- Stats -->
+        <div class="flex flex-wrap gap-6 mb-10">
+          <div>
+            <div class="text-3xl font-bold font-display text-white">8<span class="text-hs-cyan">+</span></div>
+            <div class="text-xs text-white/50 mt-0.5 font-medium">Years Experience</div>
+          </div>
+          <div class="w-px bg-white/15 self-stretch"></div>
+          <div>
+            <div class="text-3xl font-bold font-display text-white">6</div>
+            <div class="text-xs text-white/50 mt-0.5 font-medium">Global Brands</div>
+          </div>
+          <div class="w-px bg-white/15 self-stretch"></div>
+          <div>
+            <div class="text-3xl font-bold font-display text-white">140<span class="text-hs-cyan">+</span></div>
+            <div class="text-xs text-white/50 mt-0.5 font-medium">Countries Served</div>
+          </div>
+          <div class="w-px bg-white/15 self-stretch"></div>
+          <div>
+            <div class="text-2xl font-bold font-display text-white">Pan-India</div>
+            <div class="text-xs text-white/50 mt-0.5 font-medium">Coverage</div>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="flex flex-wrap gap-4">
+          <a href="#products"
+             class="inline-flex items-center gap-2 bg-hs-blue hover:bg-blue-600 text-white font-bold px-7 py-3.5 rounded-xl transition shadow-xl shadow-blue-900/40 font-display">
+            <i class="fas fa-th-large text-sm"></i> Explore Products
+          </a>
+          <button @click="modalOpen = true"
+                  class="inline-flex items-center gap-2 border-2 border-white/25 hover:border-hs-cyan text-white hover:text-hs-cyan font-bold px-7 py-3.5 rounded-xl transition font-display">
+            <i class="fas fa-calendar-check text-sm"></i> Request a Demo
+          </button>
+        </div>
+      </div>
+
+      <!-- Right – Swiper -->
+      <div class="lg:col-span-2" data-aos="fade-left" data-aos-duration="900" data-aos-delay="150">
+        <div class="relative">
+          <div class="swiper hero-swiper rounded-2xl overflow-hidden shadow-2xl shadow-black/60 border border-white/10">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide bg-gray-100">
+                <img src="ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.23.42.jpeg"
+                     alt="AI9 Lower Limb Exoskeleton Robot"
+                     class="w-full h-80 lg:h-96 object-cover">
+              </div>
+              <div class="swiper-slide bg-gray-100">
+                <img src="ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.56.jpeg"
+                     alt="NeuroStim Treatment Chair"
+                     class="w-full h-80 lg:h-96 object-cover">
+              </div>
+              <div class="swiper-slide bg-gray-100">
+                <img src="ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.36.06.jpeg"
+                     alt="Balance Trainer BOSU Kit"
+                     class="w-full h-80 lg:h-96 object-cover">
+              </div>
+              <div class="swiper-slide bg-gray-100">
+                <img src="ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.36.05.jpeg"
+                     alt="Portable EMS Unit"
+                     class="w-full h-80 lg:h-96 object-cover">
+              </div>
+            </div>
+            <div class="swiper-pagination pb-2"></div>
+          </div>
+          <!-- Floating badge -->
+          <div class="float-badge absolute -bottom-4 -left-4 z-10 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3">
+            <div class="w-9 h-9 bg-green-50 rounded-xl flex items-center justify-center">
+              <i class="fas fa-shield-alt text-green-500 text-sm"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-gray-900 leading-tight">CE Certified</div>
+              <div class="text-[10px] text-gray-400">Medical Grade Devices</div>
+            </div>
+          </div>
+          <!-- Second badge -->
+          <div class="float-badge absolute -top-4 -right-4 z-10 bg-white rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3" style="animation-delay:2.5s">
+            <div class="w-9 h-9 bg-blue-50 rounded-xl flex items-center justify-center">
+              <i class="fas fa-globe-asia text-hs-blue text-sm"></i>
+            </div>
+            <div>
+              <div class="text-xs font-bold text-gray-900 leading-tight">6 Global Brands</div>
+              <div class="text-[10px] text-gray-400">Direct Partnerships</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TICKER
+     ============================================================ -->
+<section class="bg-white border-b border-gray-100 py-4 overflow-hidden">
+  <div class="ticker-track">
+    <template x-for="rep in [0,1]">
+      <div class="flex">
+        <template x-for="t in ticker">
+          <span class="inline-flex items-center gap-2.5 px-8 whitespace-nowrap">
+            <span class="w-1.5 h-1.5 rounded-full bg-hs-blue opacity-60"></span>
+            <span class="text-sm font-semibold text-gray-500" x-text="t.brand"></span>
+            <span class="text-xs text-gray-300 font-medium" x-text="'· ' + t.country"></span>
+          </span>
+        </template>
+      </div>
+    </template>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRODUCTS
+     ============================================================ -->
+<section id="products" class="py-20 lg:py-28 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-12" data-aos="fade-up">
+      <span class="inline-block text-hs-blue text-xs font-bold tracking-widest uppercase mb-3">Our Portfolio</span>
+      <h2 class="font-display font-extrabold text-navy text-4xl lg:text-5xl mb-4">Equipment Range</h2>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+        Clinical-grade devices for rehabilitation, pain management, and sports recovery — sourced directly from global leaders.
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap justify-center gap-3 mb-12" data-aos="fade-up" data-aos-delay="80">
+      <template x-for="f in filters">
+        <button @click="activeFilter = f"
+                class="px-5 py-2 rounded-full text-sm font-semibold border transition-all duration-200"
+                :class="activeFilter === f
+                  ? 'bg-hs-blue text-white border-hs-blue shadow-lg shadow-blue-100'
+                  : 'bg-white text-gray-500 border-gray-200 hover:border-hs-blue hover:text-hs-blue'"
+                x-text="f">
+        </button>
+      </template>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <template x-for="p in products" :key="p.id">
+        <div x-show="activeFilter === 'All' || activeFilter === p.cat"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 scale-95"
+             x-transition:enter-end="opacity-100 scale-100"
+             class="bg-white border border-gray-100 rounded-2xl overflow-hidden card-lift shadow-sm group cursor-pointer"
+             @click="activeProduct = p; productModal = true">
+          <div class="relative overflow-hidden" style="aspect-ratio:1/1">
+            <img :src="p.img" :alt="p.name"
+                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                 loading="lazy" decoding="async">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <span class="absolute top-3 left-3 text-xs font-bold text-white px-3 py-1 rounded-full shadow"
+                  :style="`background: ${p.color}`" x-text="p.cat"></span>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display font-bold text-navy text-base leading-snug mb-1.5" x-text="p.name"></h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-2" x-text="p.desc"></p>
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-300 font-medium" x-text="p.brand"></span>
+              <span class="text-hs-blue text-sm font-semibold flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                View Details <i class="fas fa-arrow-right text-xs"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     BRANDS
+     ============================================================ -->
+<section id="brands" class="py-20 lg:py-28 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <span class="inline-block text-hs-blue text-xs font-bold tracking-widest uppercase mb-3">Our Partners</span>
+      <h2 class="font-display font-extrabold text-navy text-4xl lg:text-5xl mb-4">Trusted Global Brands</h2>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto">
+        Direct partnerships with the world's leading physiotherapy equipment manufacturers.
+      </p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" data-aos="fade-up" data-aos-delay="100">
+      <template x-for="b in brands" :key="b.name">
+        <div class="brand-card bg-white rounded-2xl p-6 shadow-sm">
+          <div class="flex items-start gap-4 mb-4">
+            <span class="text-4xl leading-none" x-text="b.flag"></span>
+            <div>
+              <h3 class="font-display font-bold text-navy text-lg leading-tight" x-text="b.name"></h3>
+              <span class="text-xs text-gray-400" x-text="b.country + ' · Est. ' + b.est"></span>
+            </div>
+          </div>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4" x-text="b.desc"></p>
+          <div class="flex flex-wrap gap-1.5">
+            <template x-for="tag in b.tags">
+              <span class="text-xs bg-blue-50 text-hs-blue border border-blue-100 px-2.5 py-1 rounded-full font-medium" x-text="tag"></span>
+            </template>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY HEALSPRING
+     ============================================================ -->
+<section id="why-us" class="py-20 lg:py-28 bg-white relative overflow-hidden">
+  <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-[0.04]"
+       style="background: radial-gradient(circle,#1570C4,transparent)"></div>
+  <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full opacity-[0.04]"
+       style="background: radial-gradient(circle,#2EAFC5,transparent)"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:grid lg:grid-cols-2 lg:gap-20 items-start">
+      <div class="mb-14 lg:mb-0 lg:sticky lg:top-24" data-aos="fade-right">
+        <span class="inline-block text-hs-blue text-xs font-bold tracking-widest uppercase mb-3">Why Choose Us</span>
+        <h2 class="font-display font-extrabold text-navy text-4xl lg:text-5xl leading-tight mb-5">
+          The Healspring<br>Difference
+        </h2>
+        <p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-md">
+          We don't just supply equipment — we build long-term partnerships with clinicians committed to delivering the best outcomes for their patients.
+        </p>
+        <button @click="modalOpen = true"
+                class="inline-flex items-center gap-2 bg-navy hover:bg-navy/80 text-white font-bold px-6 py-3.5 rounded-xl transition font-display">
+          <i class="fas fa-handshake text-sm"></i> Partner With Us
+        </button>
+      </div>
+      <div class="space-y-5" data-aos="fade-left">
+        <template x-for="(item, i) in whyItems" :key="i">
+          <div class="group bg-slate-50 hover:bg-blue-50 border border-transparent hover:border-blue-100 rounded-2xl p-6 transition-all duration-300">
+            <div class="flex gap-5">
+              <div class="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
+                   :style="`background: ${item.bg}`">
+                <i :class="'fas ' + item.icon + ' text-lg'" :style="`color: ${item.clr}`"></i>
+              </div>
+              <div>
+                <div class="flex items-center gap-3 mb-1.5">
+                  <span class="text-xs font-bold text-gray-200 font-display">0<span x-text="i+1"></span></span>
+                  <h3 class="font-display font-bold text-navy text-lg" x-text="item.title"></h3>
+                </div>
+                <p class="text-gray-500 leading-relaxed text-sm" x-text="item.desc"></p>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MARKET STATS
+     ============================================================ -->
+<section class="bg-navy py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid sm:grid-cols-3 gap-10 text-center mb-10" data-aos="fade-up">
+      <div>
+        <div class="font-display font-extrabold text-white text-4xl lg:text-5xl mb-1.5">₹6,800 Cr</div>
+        <div class="text-white/50 text-sm font-medium">India Physio Market by 2030</div>
+      </div>
+      <div>
+        <div class="font-display font-extrabold text-hs-cyan text-4xl lg:text-5xl mb-1.5">10.7%</div>
+        <div class="text-white/50 text-sm font-medium">Market CAGR (2024–2032)</div>
+      </div>
+      <div>
+        <div class="font-display font-extrabold text-white text-4xl lg:text-5xl mb-1.5">20,000<span class="text-hs-cyan">+</span></div>
+        <div class="text-white/50 text-sm font-medium">Registered Physiotherapists in India</div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-8 text-center" data-aos="fade-up">
+      <p class="text-white/60 text-lg mb-5 max-w-xl mx-auto">
+        Partner with Healspring to offer your patients world-class treatment options.
+      </p>
+      <button @click="modalOpen = true"
+              class="inline-flex items-center gap-2 bg-hs-cyan hover:bg-cyan-500 text-navy font-bold px-8 py-3.5 rounded-xl transition shadow-xl shadow-cyan-900/30 font-display">
+        <i class="fas fa-phone-alt text-sm"></i> Get in Touch Today
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOUNDERS / TEAM
+     ============================================================ -->
+<section id="team" class="py-20 lg:py-28 bg-navy relative overflow-hidden">
+  <div class="absolute inset-0 opacity-[0.03]"
+       style="background-image: repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(255,255,255,.5) 39px,rgba(255,255,255,.5) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(255,255,255,.5) 39px,rgba(255,255,255,.5) 40px)">
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-14" data-aos="fade-up">
+      <span class="inline-block text-hs-cyan text-xs font-bold tracking-widest uppercase mb-3">Leadership</span>
+      <h2 class="font-display font-extrabold text-white text-4xl lg:text-5xl mb-4">Meet the Founders</h2>
+      <p class="text-white/50 text-lg max-w-lg mx-auto">
+        Two decades of combined expertise in medical equipment sales, service, and manufacturing.
+      </p>
+    </div>
+
+    <!-- Group photo -->
+    <div class="flex justify-center mb-14" data-aos="zoom-in">
+      <div class="relative inline-block">
+        <div class="absolute inset-0 rounded-2xl rotate-2"
+             style="background: linear-gradient(135deg,rgba(21,112,196,.5),rgba(46,175,197,.5))"></div>
+        <img src="Founders%20image.png" alt="Healspring Founders — Mukesh Ahirwar & Pravesh Gautam"
+             class="relative rounded-2xl w-full max-w-xs sm:max-w-sm object-cover shadow-2xl shadow-black/60 border border-white/10">
+      </div>
+    </div>
+
+    <!-- Bios -->
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- Mukesh -->
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-7 backdrop-blur-sm" data-aos="fade-right">
+        <div class="flex items-start gap-5 mb-5">
+          <div class="w-20 h-20 rounded-2xl flex-shrink-0 shadow-lg flex items-center justify-center border-2 border-hs-blue/40"
+               style="background: linear-gradient(135deg,#1570C4,#2EAFC5)">
+            <span class="font-display font-bold text-white text-2xl">MA</span>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-white text-xl leading-tight">Mukesh Ahirwar</h3>
+            <p class="text-hs-cyan text-sm font-semibold mt-0.5">Co-Founder &amp; Business Head</p>
+            <div class="flex flex-wrap gap-1.5 mt-2.5">
+              <span class="text-[11px] bg-white/10 text-white/70 px-2.5 py-0.5 rounded-full">B. Pharma</span>
+              <span class="text-[11px] bg-white/10 text-white/70 px-2.5 py-0.5 rounded-full">MBA Marketing</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-white/65 text-sm leading-relaxed mb-5">
+          8+ years of experience in physiotherapy equipment sales and marketing across India. Deep domain expertise in building clinical partnerships and B2B distribution networks for world-leading medical brands.
+        </p>
+        <div>
+          <p class="text-xs font-bold text-white/30 uppercase tracking-wider mb-2.5">Brands Represented</p>
+          <div class="flex flex-wrap gap-1.5">
+            <template x-for="b in mukeshBrands">
+              <span class="text-[11px] bg-hs-blue/20 text-hs-cyan border border-hs-blue/20 px-2.5 py-0.5 rounded-full" x-text="b"></span>
+            </template>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pravesh -->
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-7 backdrop-blur-sm" data-aos="fade-left">
+        <div class="flex items-start gap-5 mb-5">
+          <div class="w-20 h-20 rounded-2xl flex-shrink-0 shadow-lg flex items-center justify-center border-2 border-hs-cyan/40"
+               style="background: linear-gradient(135deg,#2EAFC5,#0EA5E9)">
+            <span class="font-display font-bold text-white text-2xl">PG</span>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-white text-xl leading-tight">Pravesh Gautam</h3>
+            <p class="text-hs-cyan text-sm font-semibold mt-0.5">Co-Founder &amp; Technical Head</p>
+            <div class="flex flex-wrap gap-1.5 mt-2.5">
+              <span class="text-[11px] bg-white/10 text-white/70 px-2.5 py-0.5 rounded-full">ITI Electronics</span>
+              <span class="text-[11px] bg-white/10 text-white/70 px-2.5 py-0.5 rounded-full">Manufacturing Expert</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-white/65 text-sm leading-relaxed mb-5">
+          Seasoned professional in electronics manufacturing, service engineering, and medical device maintenance. Former service specialist at Electra Koko Tawa Pvt. Ltd. — every Healspring device comes backed by expert technical support.
+        </p>
+        <div>
+          <p class="text-xs font-bold text-white/30 uppercase tracking-wider mb-2.5">Areas of Expertise</p>
+          <div class="flex flex-wrap gap-1.5">
+            <template x-for="e in praveshExp">
+              <span class="text-[11px] bg-hs-cyan/15 text-hs-cyan border border-hs-cyan/20 px-2.5 py-0.5 rounded-full" x-text="e"></span>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact" class="py-20 lg:py-28 bg-slate-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14" data-aos="fade-up">
+      <span class="inline-block text-hs-blue text-xs font-bold tracking-widest uppercase mb-3">Get In Touch</span>
+      <h2 class="font-display font-extrabold text-navy text-4xl lg:text-5xl mb-4">Let's Connect</h2>
+      <p class="text-gray-400 text-lg max-w-xl mx-auto">
+        Interested in our equipment? Reach out for a demo, pricing, or any queries.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-8">
+
+      <!-- Info -->
+      <div class="lg:col-span-2 space-y-5" data-aos="fade-right">
+        <div class="bg-navy rounded-2xl p-7 text-white">
+          <div class="w-11 h-11 rounded-xl bg-hs-blue/20 flex items-center justify-center mb-5">
+            <i class="fas fa-location-dot text-hs-cyan text-lg"></i>
+          </div>
+          <h3 class="font-display font-bold text-xl mb-0.5">Healspring Physio LLP</h3>
+          <p class="text-white/40 text-sm mb-5">Physiotherapy Equipment Distributors · Pan-India</p>
+
+          <a href="https://share.google/B3f509khfomi6Q3Zl" target="_blank" rel="noopener noreferrer"
+             class="flex items-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 rounded-xl px-4 py-3 transition mb-3 group">
+            <i class="fab fa-google text-red-400 w-4 text-center"></i>
+            <span class="text-sm font-medium flex-1">View on Google Business</span>
+            <i class="fas fa-external-link-alt text-[10px] text-white/30 group-hover:text-white/60 transition"></i>
+          </a>
+          <div class="flex items-center gap-3 bg-white/8 border border-white/10 rounded-xl px-4 py-3 mb-3">
+            <i class="fab fa-whatsapp text-green-400 w-4 text-center"></i>
+            <span class="text-sm font-medium">WhatsApp Inquiry</span>
+          </div>
+          <div class="flex items-center gap-3 bg-white/8 border border-white/10 rounded-xl px-4 py-3">
+            <i class="fas fa-envelope text-hs-cyan w-4 text-center"></i>
+            <span class="text-sm font-medium">healspring@gmail.com</span>
+          </div>
+        </div>
+
+        <div class="rounded-2xl p-6 text-white"
+             style="background: linear-gradient(135deg,#1570C4,#2EAFC5)">
+          <h4 class="font-display font-bold text-lg mb-2">Ready to Elevate Your Clinic?</h4>
+          <p class="text-white/80 text-sm leading-relaxed mb-4">
+            Schedule a live equipment demo at your clinic — free of charge, no obligation.
+          </p>
+          <button @click="modalOpen = true"
+                  class="w-full bg-white text-hs-blue font-bold py-2.5 rounded-xl transition hover:bg-blue-50 font-display text-sm shadow-lg">
+            Book Free Demo
+          </button>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="lg:col-span-3 bg-white rounded-2xl shadow-sm border border-gray-100 p-8" data-aos="fade-left">
+        <div x-show="!contactDone">
+          <h3 class="font-display font-bold text-navy text-xl mb-6">Send an Inquiry</h3>
+          <form @submit.prevent="submitContact()" class="space-y-4">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Full Name *</label>
+                <input x-model="contact.name" type="text" required placeholder="Dr. Ravi Sharma"
+                       class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm transition">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Clinic / Hospital</label>
+                <input x-model="contact.clinic" type="text" placeholder="City Physio Centre"
+                       class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm transition">
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Phone *</label>
+                <input x-model="contact.phone" type="tel" required placeholder="+91 98765 43210"
+                       class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm transition">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">City</label>
+                <input x-model="contact.city" type="text" placeholder="Delhi"
+                       class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm transition">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Equipment Interest</label>
+              <select x-model="contact.interest"
+                      class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-white transition">
+                <option value="">Select a category</option>
+                <option>Robotic Rehabilitation (Exoskeleton)</option>
+                <option>Electrotherapy / TENS / EMS</option>
+                <option>NeuroStim Treatment Chairs</option>
+                <option>Portable Therapy Devices</option>
+                <option>Balance &amp; Proprioception Training</option>
+                <option>Multiple / General Inquiry</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Message</label>
+              <textarea x-model="contact.message" rows="4"
+                        placeholder="Tell us about your clinic and requirements…"
+                        class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm resize-none transition"></textarea>
+            </div>
+            <button type="submit"
+                    class="w-full bg-hs-blue hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-xl shadow-blue-100 font-display">
+              Send Inquiry &nbsp;<i class="fas fa-paper-plane text-sm"></i>
+            </button>
+          </form>
+        </div>
+        <div x-show="contactDone" class="py-20 text-center">
+          <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-5 ring-4 ring-green-100">
+            <i class="fas fa-check text-green-500 text-2xl"></i>
+          </div>
+          <h3 class="font-display font-bold text-navy text-xl mb-2">Thank you!</h3>
+          <p class="text-gray-400 mb-5">We'll get back to you within 24 hours.</p>
+          <button @click="contactDone = false; contact = {name:'',clinic:'',phone:'',city:'',interest:'',message:''}"
+                  class="text-hs-blue font-semibold text-sm hover:underline">
+            Send another inquiry
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="bg-[#060F1C] text-white pt-14 pb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-8 h-8 rounded-lg flex items-center justify-center"
+               style="background: linear-gradient(135deg,#1570C4,#2EAFC5)">
+            <i class="fas fa-heartbeat text-white text-sm"></i>
+          </div>
+          <div class="leading-none">
+            <span class="font-display font-bold text-lg gradient-text">Healspring</span>
+            <span class="block text-[10px] text-white/30 mt-0.5">Physio LLP</span>
+          </div>
+        </div>
+        <p class="text-white/40 text-sm leading-relaxed max-w-xs mb-5">
+          Premium physiotherapy equipment distributed across India. World-class brands, local expertise, pan-India reach.
+        </p>
+        <a href="https://share.google/B3f509khfomi6Q3Zl" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 text-white/40 hover:text-white/70 text-sm transition">
+          <i class="fab fa-google text-red-400 text-base"></i>
+          Google Business Profile
+        </a>
+      </div>
+
+      <div>
+        <h5 class="font-display font-semibold text-xs uppercase tracking-widest text-white/30 mb-5">Products</h5>
+        <ul class="space-y-3 text-sm text-white/50">
+          <li><a href="#products" class="hover:text-white transition">Robotic Rehab</a></li>
+          <li><a href="#products" class="hover:text-white transition">Electrotherapy</a></li>
+          <li><a href="#products" class="hover:text-white transition">Treatment Chairs</a></li>
+          <li><a href="#products" class="hover:text-white transition">Portable Therapy</a></li>
+          <li><a href="#products" class="hover:text-white transition">Balance Training</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="font-display font-semibold text-xs uppercase tracking-widest text-white/30 mb-5">Company</h5>
+        <ul class="space-y-3 text-sm text-white/50">
+          <li><a href="#brands"  class="hover:text-white transition">Brand Partners</a></li>
+          <li><a href="#why-us"  class="hover:text-white transition">Why Healspring</a></li>
+          <li><a href="#team"    class="hover:text-white transition">Our Founders</a></li>
+          <li><a href="#contact" class="hover:text-white transition">Contact Us</a></li>
+          <li>
+            <button @click="modalOpen = true" class="hover:text-white transition text-left">Request Demo</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-white/30 text-sm">© 2026 Healspring Physio LLP. All rights reserved.</p>
+      <p class="text-white/20 text-xs">Serving physiotherapists &amp; clinicians across India.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     SCRIPTS
+     ============================================================ -->
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.data('appData', () => ({
+    /* nav / ui state */
+    scrolled: false,
+    mobileOpen: false,
+    /* demo modal */
+    modalOpen: false,
+    modalSuccess: false,
+    demo: { name:'', clinic:'', role:'', city:'', email:'', phone:'', interests:[], message:'' },
+    /* product modal */
+    productModal: false,
+    activeProduct: null,
+    /* products filter */
+    activeFilter: 'All',
+    /* contact form */
+    contactDone: false,
+    contact: { name:'', clinic:'', phone:'', city:'', interest:'', message:'' },
+
+    /* ── data ── */
+    equipInterests: ['Robotic Rehab','Electrotherapy','Treatment Chairs','Portable Therapy','Balance Training'],
+
+    ticker: [
+      { brand:'Zimmer Medizin',    country:'Germany'     },
+      { brand:'CSMI',              country:'USA'         },
+      { brand:'Verity Medical',    country:'UK'          },
+      { brand:'Baseline',          country:'USA'         },
+      { brand:'Sensmove',          country:'Netherlands' },
+      { brand:'Doctor Life',       country:'Korea'       },
+      { brand:'Robotic Rehab',     country:'AI-Powered'  },
+      { brand:'NeuroStim Chairs',  country:'Clinical'    },
+      { brand:'TENS / EMS',        country:'Therapy'     },
+      { brand:'Balance Training',  country:'Equipment'   },
+    ],
+
+    filters: ['All','Robotic Rehab','Electrotherapy','Treatment Chairs','Portable Therapy','Balance & Training'],
+
+    products: [
+      {
+        id:1, cat:'Robotic Rehab', color:'#7C3AED',
+        name:'AI9 Lower Limb Exoskeleton Robot',
+        brand:'Advanced Robotics',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.23.42.jpeg',
+        desc:'AI-powered gait learning with real force-feedback guidance. Up to 50 steps/min, 100 kg capacity.',
+        specs:['AI Gait Learning Algorithm','Force Feedback Guidance','1–99 min training time','Max load: 100 kg','Height: 150–190 cm','Stroke & ortho rehabilitation'],
+      },
+      {
+        id:2, cat:'Robotic Rehab', color:'#7C3AED',
+        name:'3000-Step Exoskeleton Robot',
+        brand:'Advanced Robotics',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.23.43.jpeg',
+        desc:'5 training modes including backward walking & in-place stepping. Detailed spec sheet included.',
+        specs:['5 Training Modes','Stretching & Knee Lifting','Backward Walking Mode','Max load: 100 kg','Height: 150–190 cm','"Walk Easily, Feel Free"'],
+      },
+      {
+        id:3, cat:'Electrotherapy', color:'#0EA5E9',
+        name:'4-in-1 TENS / EMS Combo Unit',
+        brand:'Verity Medical · UK',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.30.58.jpeg',
+        desc:'Dual-channel clinical TENS/EMS with 4000 μA output. Complete electrode kit included.',
+        specs:['TENS & EMS dual modality','4-channel stimulation','4000 μA max output','250 μs pulse width','120 mA per channel','Professional carry case'],
+      },
+      {
+        id:4, cat:'Treatment Chairs', color:'#10B981',
+        name:'NeuroStim Chair — Standard',
+        brand:'Clinical Systems',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.56.jpeg',
+        desc:'Neuromuscular stimulation chair with armrest-mounted LCD controller. Clinical-grade build.',
+        specs:['Armrest LCD controller','Rolling casters','Blue & pink upholstery','Adjustable parameters','Ergonomic seating','High-volume clinic ready'],
+      },
+      {
+        id:5, cat:'Treatment Chairs', color:'#10B981',
+        name:'NeuroStim Chair — Side Profile',
+        brand:'Clinical Systems',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.57.jpeg',
+        desc:'Articulated arm design with extended reach for flexible clinic layouts.',
+        specs:['Articulated arm system','Extended treatment reach','Smooth caster base','White clinical frame','Low-maintenance','ISO medical grade'],
+      },
+      {
+        id:6, cat:'Treatment Chairs', color:'#10B981',
+        name:'NeuroStim Chair — Patient View',
+        brand:'Clinical Systems',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.58.jpeg',
+        desc:'Patient-facing controller with real-time parameter display during treatment.',
+        specs:['Patient-facing LCD','Real-time parameters','Intuitive interface','Blue target pad guide','Comfortable position','Easy therapist control'],
+      },
+      {
+        id:7, cat:'Treatment Chairs', color:'#10B981',
+        name:'NeuroStim Chair — Top View',
+        brand:'Clinical Systems',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.59.jpeg',
+        desc:'Overhead view showing pad placement guide and ergonomic seat layout.',
+        specs:['Pad placement guide','Treatment zone precision','Symmetrical layout','Ergonomic headrest','Premium upholstery','Clinical ergonomics'],
+      },
+      {
+        id:8, cat:'Treatment Chairs', color:'#10B981',
+        name:'NeuroStim Dual Station',
+        brand:'Clinical Systems',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.66.jpeg',
+        desc:'Blue + pink dual-chair pair for high-throughput rehabilitation centres with ambient lighting.',
+        specs:['Dual chair setup','Blue & pink variants','High-throughput design','Ambient LED integration','Coordinated aesthetics','Simultaneous treatment'],
+      },
+      {
+        id:9, cat:'Portable Therapy', color:'#F59E0B',
+        name:'Portable EMS Unit MH-1087',
+        brand:'Clinical Systems',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.36.05.jpeg',
+        desc:'4-channel portable EMS in protective foam carry case. Field-ready for mobile physiotherapy.',
+        specs:['Model: MH-1087','4-channel EMS output','LCD parameter display','Colour-coded cables','Protective foam case','Field & clinical ready'],
+      },
+      {
+        id:10, cat:'Balance & Training', color:'#EF4444',
+        name:'Balance Trainer BOSU Kit',
+        brand:'Sensmove · Netherlands',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.36.06.jpeg',
+        desc:'Half-dome balance trainer with resistance ropes. 5 exercise modes for proprioception rehab.',
+        specs:['Half-dome unstable surface','5 exercise variations','Resistance rope system','Standing & squat balance','Single-leg stability','Yellow pump included'],
+      },
+    ],
+
+    brands: [
+      { name:'Zimmer Medizin',  flag:'🇩🇪', country:'Germany',     est:'1969', desc:'World leader in cryotherapy, electrotherapy, ultrasound, laser, and shockwave therapy. Present in 140+ countries.', tags:['Cryotherapy','Ultrasound','Laser Therapy','Shockwave'] },
+      { name:'CSMI',            flag:'🇺🇸', country:'USA',         est:'1982', desc:'Makers of the HUMAC NORM isokinetic dynamometer — the gold standard for clinical strength testing and rehabilitation.', tags:['Isokinetic Testing','Dynamometry','FCE'] },
+      { name:'Verity Medical',  flag:'🇬🇧', country:'United Kingdom', est:'1995', desc:'Specialists in EMG biofeedback, NMES, and TENS devices under the NeuroTrac brand for clinical rehabilitation.', tags:['TENS','NMES','EMG Biofeedback'] },
+      { name:'Baseline',        flag:'🇺🇸', country:'USA',         est:'1985', desc:'Precision measurement instruments — goniometers, dynamometers, and inclinometers for clinical assessment.', tags:['Goniometers','Dynamometers','Inclinometers'] },
+      { name:'Sensmove',        flag:'🇳🇱', country:'Netherlands', est:'2010', desc:'Interactive movement systems with biofeedback for balance, coordination, and functional rehabilitation training.', tags:['Balance Training','Biofeedback','Movement Assessment'] },
+      { name:'Doctor Life',     flag:'🇰🇷', country:'Korea',       est:'1986', desc:'FDA-approved sequential air compression systems for sports recovery and circulatory therapy.', tags:['Compression Therapy','Sports Recovery','FDA Approved'] },
+    ],
+
+    whyItems: [
+      { title:'Domain Expertise',         icon:'fa-award',          bg:'#EFF6FF', clr:'#1570C4', desc:'8+ years of B2B sales and clinical support in physiotherapy equipment across India. We speak your clinical language.' },
+      { title:'Certified Global Sourcing', icon:'fa-globe',          bg:'#F0FDF4', clr:'#10B981', desc:'Direct partnerships with leading manufacturers. Every device is authentic, warranted, and CE/ISO certified.' },
+      { title:'Pan-India Reach',           icon:'fa-map-marked-alt', bg:'#FFF7ED', clr:'#F59E0B', desc:'From metro hospitals to tier-2 clinics — we serve physiotherapists, sports centres, and rehab facilities nationwide.' },
+      { title:'End-to-End Support',        icon:'fa-headset',        bg:'#FDF4FF', clr:'#9333EA', desc:'Demo, installation, clinical training, and after-sales service. We\'re with you from purchase through long-term use.' },
+    ],
+
+    mukeshBrands: ['Zimmer Germany','CSMI USA','Verity Medical UK','Baseline USA','Sensmove Netherlands','Doctor Life Korea'],
+    praveshExp:   ['Electronics Mfg.','Device Service','Installation','Technical Training','After-sales Care'],
+
+    submitDemo() {
+      this.modalSuccess = true;
+      this.demo = { name:'',clinic:'',role:'',city:'',email:'',phone:'',interests:[],message:'' };
+    },
+    submitContact() {
+      this.contactDone = true;
+    },
+  }));
+});
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
+<script>
+window.addEventListener('load', () => {
+  AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
+  new Swiper('.hero-swiper', {
+    loop: true,
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    autoplay: { delay: 3800, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    speed: 800,
+  });
+});
+</script>
+
+</body>
+</html>
