@@ -312,9 +312,12 @@ tailwind.config = {
                     placeholder="Tell us about your clinic and equipment needs…"
                     class="w-full border border-gray-200 rounded-xl px-3.5 py-2.5 text-sm resize-none transition"></textarea>
         </div>
-        <button type="submit"
-                class="w-full bg-hs-blue hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition font-display shadow-lg shadow-blue-200 text-sm">
-          Submit Request &nbsp;<i class="fas fa-arrow-right"></i>
+        <p x-show="demoError" x-text="demoError" class="text-red-500 text-sm text-center -mb-1"></p>
+        <button type="submit" :disabled="demoSubmitting"
+                class="w-full bg-hs-blue hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3 rounded-xl transition font-display shadow-lg shadow-blue-200 text-sm flex items-center justify-center gap-2">
+          <i x-show="demoSubmitting" class="fas fa-spinner fa-spin"></i>
+          <span x-text="demoSubmitting ? 'Sending…' : 'Submit Request'"></span>
+          <i x-show="!demoSubmitting" class="fas fa-arrow-right"></i>
         </button>
       </form>
     </div>
@@ -1296,6 +1299,8 @@ document.addEventListener('alpine:init', () => {
     /* demo modal */
     modalOpen: false,
     modalSuccess: false,
+    demoSubmitting: false,
+    demoError: '',
     demo: { name:'', clinic:'', role:'', city:'', email:'', phone:'', interests:[], message:'' },
     /* product modal */
     productModal: false,
@@ -1426,9 +1431,41 @@ document.addEventListener('alpine:init', () => {
     mukeshBrands: ['Zimmer Germany','CSMI USA','Verity Medical UK','Baseline USA','Sensmove Netherlands','Doctor Life Korea'],
     praveshExp:   ['Electronics Mfg.','Device Service','Installation','Technical Training','After-sales Care'],
 
-    submitDemo() {
-      this.modalSuccess = true;
-      this.demo = { name:'',clinic:'',role:'',city:'',email:'',phone:'',interests:[],message:'' };
+    async submitDemo() {
+      this.demoSubmitting = true;
+      this.demoError = '';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: '5e9f48cc-bb7c-4f97-bd73-a82d93951aa3',
+            subject: `Demo Request — ${this.demo.name} (${this.demo.clinic}, ${this.demo.city})`,
+            from_name: this.demo.name,
+            replyto: this.demo.email,
+            Name: this.demo.name,
+            Clinic: this.demo.clinic,
+            Role: this.demo.role,
+            City: this.demo.city,
+            Email: this.demo.email,
+            Phone: this.demo.phone,
+            'Equipment Interest': this.demo.interests.join(', ') || 'Not specified',
+            Message: this.demo.message || '—',
+            botcheck: '',
+          }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          this.modalSuccess = true;
+          this.demo = { name:'',clinic:'',role:'',city:'',email:'',phone:'',interests:[],message:'' };
+        } else {
+          this.demoError = 'Submission failed. Please try again or email us directly.';
+        }
+      } catch(e) {
+        this.demoError = 'Network error. Please check your connection and try again.';
+      } finally {
+        this.demoSubmitting = false;
+      }
     },
     submitContact() {
       this.contactDone = true;
