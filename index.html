@@ -425,6 +425,7 @@ tailwind.config = {
         <a href="#why-us"        class="text-sm font-medium transition hover:text-hs-blue" :class="scrolled ? 'text-gray-600' : 'text-white/85'">Why Us</a>
         <a href="#service-areas" class="text-sm font-medium transition hover:text-hs-blue" :class="scrolled ? 'text-gray-600' : 'text-white/85'">Locations</a>
         <a href="#faq"           class="text-sm font-medium transition hover:text-hs-blue" :class="scrolled ? 'text-gray-600' : 'text-white/85'">FAQ</a>
+        <a href="#catalogue"     class="text-sm font-medium transition hover:text-hs-gold" :class="scrolled ? 'text-gray-600' : 'text-white/85'">Catalogue</a>
         <a href="#contact"       class="text-sm font-medium transition hover:text-hs-blue" :class="scrolled ? 'text-gray-600' : 'text-white/85'">Contact</a>
       </div>
 
@@ -453,6 +454,7 @@ tailwind.config = {
       <a href="#why-us"        @click="mobileOpen=false" class="block py-2.5 text-gray-700 font-medium border-b border-gray-50 hover:text-hs-blue transition">Why Us</a>
       <a href="#service-areas" @click="mobileOpen=false" class="block py-2.5 text-gray-700 font-medium border-b border-gray-50 hover:text-hs-blue transition">Locations</a>
       <a href="#faq"           @click="mobileOpen=false" class="block py-2.5 text-gray-700 font-medium border-b border-gray-50 hover:text-hs-blue transition">FAQ</a>
+      <a href="#catalogue"     @click="mobileOpen=false" class="block py-2.5 text-gray-700 font-medium border-b border-gray-50 hover:text-hs-gold transition">Catalogue <i class="fas fa-download text-xs ml-1 text-hs-gold"></i></a>
       <a href="#contact"       @click="mobileOpen=false" class="block py-2.5 text-gray-700 font-medium hover:text-hs-blue transition">Contact</a>
       <button @click="modalOpen=true; mobileOpen=false"
               class="w-full mt-3 bg-hs-blue text-white font-bold py-3 rounded-xl transition hover:bg-blue-700">
@@ -1110,6 +1112,93 @@ tailwind.config = {
         </button>
         <div x-show="open === 6" x-collapse class="px-6 pb-5">
           <p class="text-gray-500 text-sm leading-relaxed">Submit the demo request form on this website or reach out via email at <strong>Healspringphysio@gmail.com</strong>. The Healspring team responds <strong>within 24 hours</strong> to schedule a free on-site demonstration at your clinic, hospital, or rehabilitation centre. There is no charge or obligation. <button @click="modalOpen = true" class="text-hs-blue hover:underline font-semibold">Book a free demo →</button></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CATALOGUE DOWNLOAD
+     ============================================================ -->
+<section id="catalogue" class="py-20 lg:py-24 bg-gradient-to-br from-navy via-[#0d2a50] to-navy relative overflow-hidden">
+  <!-- decorative circles -->
+  <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-10" style="background:radial-gradient(circle,#38bdf8,transparent)"></div>
+  <div class="absolute -bottom-20 -left-20 w-80 h-80 rounded-full opacity-10" style="background:radial-gradient(circle,#f59e0b,transparent)"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+      <!-- Left: copy -->
+      <div data-aos="fade-right">
+        <span class="inline-block text-hs-cyan text-xs font-bold tracking-widest uppercase mb-4">Product Catalogue</span>
+        <h2 class="font-display font-extrabold text-white text-4xl lg:text-5xl leading-tight mb-6">
+          Everything You Need,<br>
+          <span class="text-hs-gold">In One Document</span>
+        </h2>
+        <p class="text-slate-300 text-lg leading-relaxed mb-8">
+          Download our comprehensive product catalogue featuring all 13 clinical therapy systems — complete with technical specifications, clinical applications, and brand information. Share it with your team or reference it for purchase planning.
+        </p>
+        <ul class="space-y-3 mb-10 text-slate-300 text-sm">
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-hs-cyan text-base"></i>13 product categories with full clinical specs</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-hs-cyan text-base"></i>Brand & model details for all equipment</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-hs-cyan text-base"></i>Treatment protocols & indications</li>
+          <li class="flex items-center gap-3"><i class="fas fa-check-circle text-hs-cyan text-base"></i>Suitable for clinics, hospitals & rehab centres</li>
+        </ul>
+        <a href="Healspring_Product_Catalogue.pdf"
+           download="Healspring_Product_Catalogue.pdf"
+           class="inline-flex items-center gap-3 bg-hs-gold hover:bg-yellow-400 text-navy font-extrabold text-base px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 group">
+          <i class="fas fa-download text-lg group-hover:animate-bounce"></i>
+          Download Full Catalogue (PDF)
+        </a>
+        <p class="text-slate-500 text-xs mt-4">PDF · 4.5 MB · No sign-up required</p>
+      </div>
+
+      <!-- Right: mock catalogue cover card -->
+      <div data-aos="fade-left" class="flex justify-center">
+        <div class="relative w-72 lg:w-80">
+          <!-- shadow stack -->
+          <div class="absolute inset-0 translate-x-3 translate-y-3 rounded-2xl bg-white/5"></div>
+          <div class="absolute inset-0 translate-x-1.5 translate-y-1.5 rounded-2xl bg-white/10"></div>
+          <!-- card -->
+          <div class="relative bg-white rounded-2xl overflow-hidden shadow-2xl">
+            <!-- header stripe -->
+            <div class="bg-gradient-to-r from-navy to-hs-blue px-6 py-5">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-8 h-8 rounded-full bg-hs-gold flex items-center justify-center">
+                  <i class="fas fa-heartbeat text-navy text-sm"></i>
+                </div>
+                <div>
+                  <p class="text-white font-bold text-sm leading-none">Healspring Physio LLP</p>
+                  <p class="text-hs-cyan text-xs">Product Catalogue 2025</p>
+                </div>
+              </div>
+              <h3 class="text-white font-extrabold text-xl leading-tight">Clinical Therapy<br>Equipment Guide</h3>
+            </div>
+            <!-- body: product list preview -->
+            <div class="px-5 py-4 space-y-2">
+              <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">Includes</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full font-medium">Electrotherapy</span>
+                <span class="text-xs bg-red-50 text-red-600 px-2 py-0.5 rounded-full font-medium">Laser Therapy</span>
+                <span class="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full font-medium">Shockwave</span>
+                <span class="text-xs bg-green-50 text-green-700 px-2 py-0.5 rounded-full font-medium">Magnetic Therapy</span>
+                <span class="text-xs bg-purple-50 text-purple-700 px-2 py-0.5 rounded-full font-medium">Decompression</span>
+                <span class="text-xs bg-violet-50 text-violet-700 px-2 py-0.5 rounded-full font-medium">Robotics</span>
+                <span class="text-xs bg-cyan-50 text-cyan-700 px-2 py-0.5 rounded-full font-medium">Cryotherapy</span>
+                <span class="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full font-medium">+ 6 more</span>
+              </div>
+            </div>
+            <!-- footer CTA -->
+            <div class="border-t border-gray-100 px-5 py-3 bg-gray-50 flex items-center justify-between">
+              <span class="text-xs text-gray-500">PDF · 4.5 MB</span>
+              <a href="Healspring_Product_Catalogue.pdf" download="Healspring_Product_Catalogue.pdf"
+                 class="inline-flex items-center gap-1.5 text-xs font-bold text-hs-blue hover:text-navy transition-colors">
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
         </div>
       </div>
 
