@@ -348,9 +348,18 @@ tailwind.config = {
        x-transition:enter-end="opacity-100 scale-100">
     <template x-if="activeProduct">
       <div>
-        <div class="relative">
-          <img :src="activeProduct.img" :alt="activeProduct.name"
-               class="w-full h-64 object-cover">
+        <div class="relative h-56 overflow-hidden">
+          <template x-if="activeProduct.img">
+            <img :src="activeProduct.img" :alt="activeProduct.name"
+                 class="w-full h-full object-cover">
+          </template>
+          <template x-if="!activeProduct.img">
+            <div class="w-full h-full flex flex-col items-center justify-center gap-3"
+                 :style="`background: linear-gradient(135deg, ${activeProduct.color}18 0%, ${activeProduct.color}38 100%)`">
+              <i class="text-7xl" :class="`fas ${activeProduct.icon}`" :style="`color: ${activeProduct.color}`"></i>
+              <span class="text-sm font-semibold tracking-wider uppercase opacity-60" :style="`color: ${activeProduct.color}`">Demo Available — Contact Us</span>
+            </div>
+          </template>
           <button @click="productModal = false"
                   class="absolute top-3 right-3 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-gray-600 hover:bg-white transition shadow">
             <i class="fas fa-times text-sm"></i>
@@ -664,7 +673,7 @@ tailwind.config = {
       <span class="inline-block text-hs-blue text-xs font-bold tracking-widest uppercase mb-3">Our Portfolio</span>
       <h2 class="font-display font-extrabold text-navy text-4xl lg:text-5xl mb-4">What Physiotherapy Equipment Does Healspring Offer?</h2>
       <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-        Healspring distributes clinical-grade devices for robotic rehabilitation, electrotherapy, pain management, and sports recovery — sourced directly from 6 global leaders and available for on-site demo across India.
+        From Class 4 Laser and Shockwave to Robotic Exoskeletons and Spinal Decompression — Healspring distributes 13 categories of clinical-grade physiotherapy equipment, available for on-site demo across India.
       </p>
     </div>
 
@@ -690,10 +699,19 @@ tailwind.config = {
              x-transition:enter-end="opacity-100 scale-100"
              class="bg-white border border-gray-100 rounded-2xl overflow-hidden card-lift shadow-sm group cursor-pointer"
              @click="activeProduct = p; productModal = true">
-          <div class="relative overflow-hidden" style="aspect-ratio:1/1">
-            <img :src="p.img" :alt="p.name"
-                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                 loading="lazy" decoding="async">
+          <div class="relative overflow-hidden" style="aspect-ratio:4/3">
+            <template x-if="p.img">
+              <img :src="p.img" :alt="p.name"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                   loading="lazy" decoding="async">
+            </template>
+            <template x-if="!p.img">
+              <div class="w-full h-full flex flex-col items-center justify-center gap-3"
+                   :style="`background: linear-gradient(135deg, ${p.color}18 0%, ${p.color}38 100%)`">
+                <i class="text-5xl" :class="`fas ${p.icon}`" :style="`color: ${p.color}`"></i>
+                <span class="text-xs font-semibold tracking-wider uppercase opacity-60" :style="`color: ${p.color}`">Demo Available</span>
+              </div>
+            </template>
             <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <span class="absolute top-3 left-3 text-xs font-bold text-white px-3 py-1 rounded-full shadow"
                   :style="`background: ${p.color}`" x-text="p.cat"></span>
@@ -1312,7 +1330,21 @@ document.addEventListener('alpine:init', () => {
     contact: { name:'', clinic:'', phone:'', city:'', interest:'', message:'' },
 
     /* ── data ── */
-    equipInterests: ['Robotic Rehab','Electrotherapy','Treatment Chairs','Portable Therapy','Balance Training'],
+    equipInterests: [
+      'Electro & Ultrasound Therapy',
+      'Class 4 Laser Therapy',
+      'Radial / Focus Shockwave',
+      'Magnetic Therapy & Gyneo Chair',
+      '3D / 4D Spinal Decompression',
+      'Knee Decompression Therapy',
+      'Robotics Skeleton Walker',
+      'Cryotherapy Unit',
+      'EMG Biofeedback & Gaming',
+      'Pneumatic Compression Therapy',
+      'Tecar Therapy (448kHz)',
+      'Robotics Gloves',
+      '4-in-1 Home Visit Therapy',
+    ],
 
     ticker: [
       { brand:'Zimmer Medizin',    country:'Germany'     },
@@ -1327,88 +1359,112 @@ document.addEventListener('alpine:init', () => {
       { brand:'Balance Training',  country:'Equipment'   },
     ],
 
-    filters: ['All','Robotic Rehab','Electrotherapy','Treatment Chairs','Portable Therapy','Balance & Training'],
+    filters: ['All','Electrotherapy','Laser & Shockwave','Robotic Rehab','Decompression','Recovery Therapy','Home Therapy'],
 
     products: [
       {
-        id:1, cat:'Robotic Rehab', color:'#7C3AED',
-        name:'AI9 Lower Limb Exoskeleton Robot',
-        brand:'Advanced Robotics',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.23.42.jpeg',
-        desc:'AI-powered gait learning with real force-feedback guidance. Up to 50 steps/min, 100 kg capacity.',
-        specs:['AI Gait Learning Algorithm','Force Feedback Guidance','1–99 min training time','Max load: 100 kg','Height: 150–190 cm','Stroke & ortho rehabilitation'],
+        id:1, cat:'Electrotherapy', color:'#0EA5E9', icon:'fa-bolt',
+        name:'Electro & Ultrasound Therapy',
+        brand:'BTL Medical',
+        img:'ToUseImgs/TENS%20%26%20EMS.jpeg',
+        desc:'Clinical-grade 2-channel electrotherapy + 1-channel ultrasound (BTL-4825SL Premium). Body-parts navigation, QUICK protocols, heated multi-frequency applicators and battery operation for versatile clinical use.',
+        specs:['Large 7″ colour touch screen','QUICK protocols & body navigation','Programmable waveform sequences','High Voltage & Constant Current modes','Heated multi-freq ultrasound: 1 & 3 MHz','Simultaneous 1+3 MHz ultrasound treatment'],
       },
       {
-        id:2, cat:'Robotic Rehab', color:'#7C3AED',
-        name:'3000-Step Exoskeleton Robot',
-        brand:'Advanced Robotics',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.23.43.jpeg',
-        desc:'5 training modes including backward walking & in-place stepping. Detailed spec sheet included.',
-        specs:['5 Training Modes','Stretching & Knee Lifting','Backward Walking Mode','Max load: 100 kg','Height: 150–190 cm','"Walk Easily, Feel Free"'],
+        id:2, cat:'Laser & Shockwave', color:'#EF4444', icon:'fa-radiation',
+        name:'Class 4 Laser Therapy',
+        brand:'BioTheraX',
+        img:null,
+        desc:'High-intensity Class IV diode laser (BioTheraX-SuperLaser). 10W output at 980nm penetrates deep tissue to stimulate cellular activity, reduce inflammation, and accelerate healing — drug-free and surgery-free.',
+        specs:['Power: up to 10W output','Wavelength: 980nm diode laser','10″ HD Android touch screen','Deep tissue cellular stimulation','Pre-programmed therapy modes','CE-certified medical device'],
       },
       {
-        id:3, cat:'Electrotherapy', color:'#0EA5E9',
-        name:'4-in-1 TENS / EMS Combo Unit',
-        brand:'Verity Medical · UK',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.30.58.jpeg',
-        desc:'Dual-channel clinical TENS/EMS with 4000 μA output. Complete electrode kit included.',
-        specs:['TENS & EMS dual modality','4-channel stimulation','4000 μA max output','250 μs pulse width','120 mA per channel','Professional carry case'],
+        id:3, cat:'Laser & Shockwave', color:'#F59E0B', icon:'fa-wave-square',
+        name:'Radial & Focus Shockwave Therapy',
+        brand:'BioTheraX',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-09%20at%2012.02.08.jpeg',
+        desc:'Dual system — BioTheraX-AirShock (pneumatic radial, 1–10 bar, 1–21 Hz) paired with BioTheraX-Focus (concentrated acoustic energy, 0–70mm depth). Ideal for calcifications, chronic pain, and deep tendon recovery.',
+        specs:['Radial: 1–10 bar, 1–21 Hz, 8″ HD screen','Focus: 0–70mm penetration depth','4 interchangeable applicator heads','10.1″ Android touch screen (Focus unit)','Chronic pain & tendinopathy treatment','Non-invasive, no anaesthesia required'],
       },
       {
-        id:4, cat:'Treatment Chairs', color:'#10B981',
-        name:'NeuroStim Chair — Standard',
-        brand:'Clinical Systems',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.56.jpeg',
-        desc:'Neuromuscular stimulation chair with armrest-mounted LCD controller. Clinical-grade build.',
-        specs:['Armrest LCD controller','Rolling casters','Blue & pink upholstery','Adjustable parameters','Ergonomic seating','High-volume clinic ready'],
-      },
-      {
-        id:5, cat:'Treatment Chairs', color:'#10B981',
-        name:'NeuroStim Chair — Side Profile',
-        brand:'Clinical Systems',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.57.jpeg',
-        desc:'Articulated arm design with extended reach for flexible clinic layouts.',
-        specs:['Articulated arm system','Extended treatment reach','Smooth caster base','White clinical frame','Low-maintenance','ISO medical grade'],
-      },
-      {
-        id:6, cat:'Treatment Chairs', color:'#10B981',
-        name:'NeuroStim Chair — Patient View',
-        brand:'Clinical Systems',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.58.jpeg',
-        desc:'Patient-facing controller with real-time parameter display during treatment.',
-        specs:['Patient-facing LCD','Real-time parameters','Intuitive interface','Blue target pad guide','Comfortable position','Easy therapist control'],
-      },
-      {
-        id:7, cat:'Treatment Chairs', color:'#10B981',
-        name:'NeuroStim Chair — Top View',
-        brand:'Clinical Systems',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.59.jpeg',
-        desc:'Overhead view showing pad placement guide and ergonomic seat layout.',
-        specs:['Pad placement guide','Treatment zone precision','Symmetrical layout','Ergonomic headrest','Premium upholstery','Clinical ergonomics'],
-      },
-      {
-        id:8, cat:'Treatment Chairs', color:'#10B981',
-        name:'NeuroStim Dual Station',
+        id:4, cat:'Electrotherapy', color:'#10B981', icon:'fa-magnet',
+        name:'Magnetic Therapy & Gyneo Chair',
         brand:'Clinical Systems',
         img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.66.jpeg',
-        desc:'Blue + pink dual-chair pair for high-throughput rehabilitation centres with ambient lighting.',
-        specs:['Dual chair setup','Blue & pink variants','High-throughput design','Ambient LED integration','Coordinated aesthetics','Simultaneous treatment'],
+        desc:'High-Energy Inductive Therapy (HIIT) chair delivering non-invasive pelvic floor rehabilitation through focused electromagnetic fields. 10,000+ supramaximal contractions per 28-minute session. No undressing required.',
+        specs:['High Energy Inductive Therapy (HIIT)','Pelvic floor & incontinence treatment','10,000+ contractions per session','Touchscreen armrest controller','Blue & pink upholstery options','Rolling casters for clinic mobility'],
       },
       {
-        id:9, cat:'Portable Therapy', color:'#F59E0B',
-        name:'Portable EMS Unit MH-1087',
-        brand:'Clinical Systems',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.36.05.jpeg',
-        desc:'4-channel portable EMS in protective foam carry case. Field-ready for mobile physiotherapy.',
-        specs:['Model: MH-1087','4-channel EMS output','LCD parameter display','Colour-coded cables','Protective foam case','Field & clinical ready'],
+        id:5, cat:'Decompression', color:'#7C3AED', icon:'fa-arrows-alt-v',
+        name:'3D & 4D Robotics Decompression Therapy',
+        brand:'Creative Engineering',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-09%20at%2012.05.56.jpeg',
+        desc:'Advance Robotic 4D Spinal Decompression System — non-surgical computer-aided therapy creating negative intradiscal pressure for herniated, bulging, and degenerative disc conditions. Made in India.',
+        specs:['Separate lumbar & cervical motors','6 pre-programmed decompression protocols','Auto axial, flexion & lateral rotation','10-inch colour touch screen display','Real-time load cell force feedback','Load capacity: 150 kg | Made in India'],
       },
       {
-        id:10, cat:'Balance & Training', color:'#EF4444',
-        name:'Balance Trainer BOSU Kit',
-        brand:'Sensmove · Netherlands',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.36.06.jpeg',
-        desc:'Half-dome balance trainer with resistance ropes. 5 exercise modes for proprioception rehab.',
-        specs:['Half-dome unstable surface','5 exercise variations','Resistance rope system','Standing & squat balance','Single-leg stability','Yellow pump included'],
+        id:6, cat:'Decompression', color:'#7C3AED', icon:'fa-arrows-alt-v',
+        name:'Knee Decompression Therapy',
+        brand:'Creative Engineering',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-09%20at%2012.05.55.jpeg',
+        desc:'Computerised knee joint decompression with continuous passive motion (CPM) for post-surgical recovery, osteoarthritis, and sports injury rehabilitation. Customisable protocols with precise angle control.',
+        specs:['Adjustable range of motion control','Post-surgical knee recovery protocols','Osteoarthritis & joint mobilisation','Patient emergency stop switch','Custom treatment programming','1-year warranty + lifetime technical support'],
+      },
+      {
+        id:7, cat:'Robotic Rehab', color:'#6D28D9', icon:'fa-robot',
+        name:'Robotics Skeleton Walker',
+        brand:'NEUROTICS Robotics',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.23.42.jpeg',
+        desc:'Lower Limb Exoskeleton Rehabilitation Robot with AI gait learning and force-feedback guidance. Designed for stroke, orthopaedic, and neurological patients across 5 structured training modes.',
+        specs:['AI gait learning algorithm','5 modes: walking, stepping, stretching, backward','Walking pace: 1–50 steps/min','Training time: 1–99 min adjustable','Max load: 100 kg | Height: 150–190 cm','Force feedback & leg-length one-click adjust'],
+      },
+      {
+        id:8, cat:'Recovery Therapy', color:'#06B6D4', icon:'fa-snowflake',
+        name:'Cryotherapy (Cold Air Therapy) Unit',
+        brand:'Evercryo Medical',
+        img:'ToUseImgs/Cold%20Compression%20Therapy%20(%20Cryotherapy).jpeg',
+        desc:'Professional cold air cryotherapy system using refrigeration technology to rapidly reduce epidermal temperature. Precise targeting, constant dosage delivery, and 9 preset modes for acute and post-operative care.',
+        specs:['Power: 1,600W refrigeration system','Lowest cooling temp: −35°C','Fan: 9 adjustable speed levels','3-time loop: 20/40/60 min cycles','9 preset treatment modes','No consumables — continuous day-use capable'],
+      },
+      {
+        id:9, cat:'Electrotherapy', color:'#8B5CF6', icon:'fa-brain',
+        name:'EMG Biofeedback with FES, TENS, NMES & Gaming',
+        brand:'Konmed+ / Verity Medical UK',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-09%20at%2012.01.52.jpeg',
+        desc:'Konmed+ Biofeedback Stimulator — 2-channel EMG with 4-channel NMES/FES. EMG-Triggered Stimulation (ETS) for stroke and neurological rehab. Engaging biofeedback gaming software for motor re-learning.',
+        specs:['2-channel EMG + 4-channel NMES/FES','EMG Triggered Stimulation (ETS) mode','10 EMG biofeedback games','TENS, NMES, FES & Mirror Therapy modes','Pelvic, Sport, Rehab & Swallow programs','4-channel independent intensity control'],
+      },
+      {
+        id:10, cat:'Recovery Therapy', color:'#3B82F6', icon:'fa-compress-arrows-alt',
+        name:'Pneumatic Compression Therapy — 4 & 6 Chamber',
+        brand:'Doctor Life · Korea',
+        img:null,
+        desc:'Lx9 Sequential Intermittent Pneumatic Compression System (FDA-approved) for lymphoedema management, DVT prevention, oedema reduction, and sports recovery. Available in 4-chamber and 6-chamber garments.',
+        specs:['4-chamber & 6-chamber garment options','Pressure range: 20–200 mmHg','Treatment time: up to 90 min','4 sequential massage programs (A–D)','Skip chamber function','FDA-approved medical device'],
+      },
+      {
+        id:11, cat:'Electrotherapy', color:'#0EA5E9', icon:'fa-broadcast-tower',
+        name:'Tecar Therapy (448kHz)',
+        brand:'India Tecar / Indiba',
+        img:null,
+        desc:'448kHz Tecar (Transfer of Energy Capacitive and Resistive) for rapid deep tissue repair and pain management. Clinically proven for joint, muscle, and tendon recovery with thermogenic deep heating effect.',
+        specs:['448kHz frequency technology (CE/CET & RET)','Capacitive & resistive energy modes','Deep tissue thermogenic heating','Reduces inflammation & joint stiffness','Sports injury & chronic pain recovery','Clinically validated outcomes'],
+      },
+      {
+        id:12, cat:'Robotic Rehab', color:'#6D28D9', icon:'fa-hand-paper',
+        name:'Robotics Gloves — 1 Hand & 2 Hands',
+        brand:'Advanced Robotics',
+        img:null,
+        desc:'Pneumatic robotic rehabilitation gloves for post-stroke hand motor recovery. AI-assisted gripping exercises with EMG-triggered stimulation promote neuroplasticity and functional grip restoration for stroke and brain injury patients.',
+        specs:['Single & dual hand configurations','Pneumatic actuation mechanism','EMG-triggered stimulation support','Stroke & brain injury rehabilitation','AI-assisted grip training protocols','Neuroplasticity-focused therapy design'],
+      },
+      {
+        id:13, cat:'Home Therapy', color:'#F59E0B', icon:'fa-home',
+        name:'4-in-1 Combination Therapy — Home Visit',
+        brand:'Healspring Physio',
+        img:'ToUseImgs/WhatsApp%20Image%202026-05-09%20at%2012.02.23.jpeg',
+        desc:'Portable 4-in-1 TENS/EMS/IFT/RUSS device for in-home physiotherapy sessions. 60 preset programs across all four modalities, dual independent channels, and 0–120 mA intensity range. Complete carry case included.',
+        specs:['4 modalities: TENS, EMS, IFT, RUSS','60 preset programs (23 TENS + 13 EMS + 8 IFT + 8 RUSS)','Dual channel independent control','Intensity: 0–120 mA (120 levels)','Timer: 5–90 minutes adjustable','Portable carry case + electrode kit'],
       },
     ],
 
