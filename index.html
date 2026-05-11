@@ -12,6 +12,9 @@
 <meta name="geo.region" content="IN-DL">
 <meta name="geo.placename" content="Delhi, India">
 <link rel="canonical" href="https://www.healspringphysiollp.in/">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none';">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -147,9 +150,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha384-/o6I2CkkWC//PSjvWC/eYN7l3xM3tJm8ZzVkCOfp//W05QcE3mlGskpoHB6XqI+B" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" integrity="sha384-gAPqlBuTCdtVcYt9ocMOYWrnBZ4XSL6q+4eXqwNycOr4iFczhNKtnYhF3NEXJM51" crossorigin="anonymous">
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -536,25 +539,25 @@ tailwind.config = {
           <div class="swiper hero-swiper rounded-2xl overflow-hidden shadow-2xl shadow-black/60 border border-white/10">
             <div class="swiper-wrapper">
               <div class="swiper-slide bg-gray-100">
-                <img src="ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.23.42.jpeg"
+                <img src="assets/WhatsApp%20Image%202026-05-06%20at%2021.23.42.jpeg"
                      alt="AI9 Lower Limb Exoskeleton Robot"
                      class="w-full h-80 lg:h-96 object-cover"
                      loading="eager">
               </div>
               <div class="swiper-slide bg-gray-100">
-                <img src="ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.56.jpeg"
+                <img src="assets/WhatsApp%20Image%202026-05-06%20at%2021.35.56.jpeg"
                      alt="NeuroStim Treatment Chair"
                      class="w-full h-80 lg:h-96 object-cover"
                      loading="eager">
               </div>
               <div class="swiper-slide bg-gray-100">
-                <img src="ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.36.06.jpeg"
+                <img src="assets/WhatsApp%20Image%202026-05-06%20at%2021.36.06.jpeg"
                      alt="Balance Trainer BOSU Kit"
                      class="w-full h-80 lg:h-96 object-cover"
                      loading="eager">
               </div>
               <div class="swiper-slide bg-gray-100">
-                <img src="ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.36.05.jpeg"
+                <img src="assets/WhatsApp%20Image%202026-05-06%20at%2021.36.05.jpeg"
                      alt="Portable EMS Unit"
                      class="w-full h-80 lg:h-96 object-cover"
                      loading="eager">
@@ -1283,21 +1286,34 @@ tailwind.config = {
                        class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm transition">
               </div>
               <div>
-                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">City</label>
-                <input x-model="contact.city" type="text" placeholder="Delhi"
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Email</label>
+                <input x-model="contact.email" type="email" placeholder="dr.ravi@clinic.com"
                        class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm transition">
               </div>
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">City</label>
+              <input x-model="contact.city" type="text" placeholder="Delhi"
+                     class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm transition">
             </div>
             <div>
               <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Equipment Interest</label>
               <select x-model="contact.interest"
                       class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-white transition">
                 <option value="">Select a category</option>
-                <option>Robotic Rehabilitation (Exoskeleton)</option>
-                <option>Electrotherapy / TENS / EMS</option>
-                <option>NeuroStim Treatment Chairs</option>
-                <option>Portable Therapy Devices</option>
-                <option>Balance &amp; Proprioception Training</option>
+                <option>Electro &amp; Ultrasound Therapy</option>
+                <option>Class 4 Laser Therapy</option>
+                <option>Radial / Focus Shockwave Therapy</option>
+                <option>Magnetic Therapy &amp; Gyneo Chair</option>
+                <option>3D / 4D Robotics Decompression</option>
+                <option>Knee Decompression Therapy</option>
+                <option>Robotics Skeleton Walker</option>
+                <option>Cryotherapy Unit</option>
+                <option>EMG Biofeedback &amp; Gaming Rehab</option>
+                <option>Pneumatic Compression Therapy</option>
+                <option>Tecar Therapy (448kHz)</option>
+                <option>Robotics Gloves</option>
+                <option>4-in-1 Home Visit Therapy</option>
                 <option>Multiple / General Inquiry</option>
               </select>
             </div>
@@ -1307,9 +1323,11 @@ tailwind.config = {
                         placeholder="Tell us about your clinic and requirements…"
                         class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm resize-none transition"></textarea>
             </div>
-            <button type="submit"
-                    class="w-full bg-hs-blue hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition shadow-xl shadow-blue-100 font-display">
-              Send Inquiry &nbsp;<i class="fas fa-paper-plane text-sm"></i>
+            <p x-show="contactError" x-text="contactError" class="text-red-500 text-sm text-center py-1"></p>
+            <button type="submit" :disabled="contactSubmitting"
+                    class="w-full bg-hs-blue hover:bg-blue-700 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-3 rounded-xl transition shadow-xl shadow-blue-100 font-display">
+              <span x-show="!contactSubmitting">Send Inquiry &nbsp;<i class="fas fa-paper-plane text-sm"></i></span>
+              <span x-show="contactSubmitting"><i class="fas fa-spinner fa-spin mr-2"></i>Sending…</span>
             </button>
           </form>
         </div>
@@ -1319,7 +1337,7 @@ tailwind.config = {
           </div>
           <h3 class="font-display font-bold text-navy text-xl mb-2">Thank you!</h3>
           <p class="text-gray-400 mb-5">We'll get back to you within 24 hours.</p>
-          <button @click="contactDone = false; contact = {name:'',clinic:'',phone:'',city:'',interest:'',message:''}"
+          <button @click="contactDone = false; contactError = ''; contact = {name:'',clinic:'',phone:'',email:'',city:'',interest:'',message:''}"
                   class="text-hs-blue font-semibold text-sm hover:underline">
             Send another inquiry
           </button>
@@ -1416,7 +1434,9 @@ document.addEventListener('alpine:init', () => {
     activeFilter: 'All',
     /* contact form */
     contactDone: false,
-    contact: { name:'', clinic:'', phone:'', city:'', interest:'', message:'' },
+    contactSubmitting: false,
+    contactError: '',
+    contact: { name:'', clinic:'', phone:'', email:'', city:'', interest:'', message:'' },
 
     /* ── data ── */
     equipInterests: [
@@ -1455,7 +1475,7 @@ document.addEventListener('alpine:init', () => {
         id:1, cat:'Electrotherapy', color:'#0EA5E9', icon:'fa-bolt',
         name:'Electro & Ultrasound Therapy',
         brand:'BTL Medical',
-        img:'ToUseImgs/TENS%20%26%20EMS.jpeg',
+        img:'assets/TENS%20%26%20EMS.jpeg',
         desc:'Clinical-grade 2-channel electrotherapy + 1-channel ultrasound (BTL-4825SL Premium). Body-parts navigation, QUICK protocols, heated multi-frequency applicators and battery operation for versatile clinical use.',
         specs:['Large 7″ colour touch screen','QUICK protocols & body navigation','Programmable waveform sequences','High Voltage & Constant Current modes','Heated multi-freq ultrasound: 1 & 3 MHz','Simultaneous 1+3 MHz ultrasound treatment'],
       },
@@ -1463,7 +1483,7 @@ document.addEventListener('alpine:init', () => {
         id:2, cat:'Laser & Shockwave', color:'#EF4444', icon:'fa-radiation',
         name:'Class 4 Laser Therapy',
         brand:'BioTheraX',
-        img:'ToUseImgs/Class%204%20Laser%20Therapy.jpeg',
+        img:'assets/Class%204%20Laser%20Therapy.jpeg',
         desc:'High-intensity Class IV diode laser (BioTheraX-SuperLaser). 10W output at 980nm penetrates deep tissue to stimulate cellular activity, reduce inflammation, and accelerate healing — drug-free and surgery-free.',
         specs:['Power: up to 10W output','Wavelength: 980nm diode laser','10″ HD Android touch screen','Deep tissue cellular stimulation','Pre-programmed therapy modes','CE-certified medical device'],
       },
@@ -1471,7 +1491,7 @@ document.addEventListener('alpine:init', () => {
         id:3, cat:'Laser & Shockwave', color:'#F59E0B', icon:'fa-wave-square',
         name:'Radial & Focus Shockwave Therapy',
         brand:'BioTheraX',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-09%20at%2012.02.08.jpeg',
+        img:'assets/WhatsApp%20Image%202026-05-09%20at%2012.02.08.jpeg',
         desc:'Dual system — BioTheraX-AirShock (pneumatic radial, 1–10 bar, 1–21 Hz) paired with BioTheraX-Focus (concentrated acoustic energy, 0–70mm depth). Ideal for calcifications, chronic pain, and deep tendon recovery.',
         specs:['Radial: 1–10 bar, 1–21 Hz, 8″ HD screen','Focus: 0–70mm penetration depth','4 interchangeable applicator heads','10.1″ Android touch screen (Focus unit)','Chronic pain & tendinopathy treatment','Non-invasive, no anaesthesia required'],
       },
@@ -1479,7 +1499,7 @@ document.addEventListener('alpine:init', () => {
         id:4, cat:'Electrotherapy', color:'#10B981', icon:'fa-magnet',
         name:'Magnetic Therapy & Gyneo Chair',
         brand:'Clinical Systems',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.35.66.jpeg',
+        img:'assets/WhatsApp%20Image%202026-05-06%20at%2021.35.66.jpeg',
         desc:'High-Energy Inductive Therapy (HIIT) chair delivering non-invasive pelvic floor rehabilitation through focused electromagnetic fields. 10,000+ supramaximal contractions per 28-minute session. No undressing required.',
         specs:['High Energy Inductive Therapy (HIIT)','Pelvic floor & incontinence treatment','10,000+ contractions per session','Touchscreen armrest controller','Blue & pink upholstery options','Rolling casters for clinic mobility'],
       },
@@ -1487,7 +1507,7 @@ document.addEventListener('alpine:init', () => {
         id:5, cat:'Decompression', color:'#7C3AED', icon:'fa-arrows-alt-v',
         name:'3D & 4D Robotics Decompression Therapy',
         brand:'Creative Engineering',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-09%20at%2012.05.56.jpeg',
+        img:'assets/WhatsApp%20Image%202026-05-09%20at%2012.05.56.jpeg',
         desc:'Advance Robotic 4D Spinal Decompression System — non-surgical computer-aided therapy creating negative intradiscal pressure for herniated, bulging, and degenerative disc conditions. Made in India.',
         specs:['Separate lumbar & cervical motors','6 pre-programmed decompression protocols','Auto axial, flexion & lateral rotation','10-inch colour touch screen display','Real-time load cell force feedback','Load capacity: 150 kg | Made in India'],
       },
@@ -1495,7 +1515,7 @@ document.addEventListener('alpine:init', () => {
         id:6, cat:'Decompression', color:'#7C3AED', icon:'fa-arrows-alt-v',
         name:'Knee Decompression Therapy',
         brand:'Creative Engineering',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-09%20at%2012.05.55.jpeg',
+        img:'assets/WhatsApp%20Image%202026-05-09%20at%2012.05.55.jpeg',
         desc:'Computerised knee joint decompression with continuous passive motion (CPM) for post-surgical recovery, osteoarthritis, and sports injury rehabilitation. Customisable protocols with precise angle control.',
         specs:['Adjustable range of motion control','Post-surgical knee recovery protocols','Osteoarthritis & joint mobilisation','Patient emergency stop switch','Custom treatment programming','1-year warranty + lifetime technical support'],
       },
@@ -1503,7 +1523,7 @@ document.addEventListener('alpine:init', () => {
         id:7, cat:'Robotic Rehab', color:'#6D28D9', icon:'fa-robot',
         name:'Robotics Skeleton Walker',
         brand:'NEUROTICS Robotics',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-06%20at%2021.23.42.jpeg',
+        img:'assets/WhatsApp%20Image%202026-05-06%20at%2021.23.42.jpeg',
         desc:'Lower Limb Exoskeleton Rehabilitation Robot with AI gait learning and force-feedback guidance. Designed for stroke, orthopaedic, and neurological patients across 5 structured training modes.',
         specs:['AI gait learning algorithm','5 modes: walking, stepping, stretching, backward','Walking pace: 1–50 steps/min','Training time: 1–99 min adjustable','Max load: 100 kg | Height: 150–190 cm','Force feedback & leg-length one-click adjust'],
       },
@@ -1511,7 +1531,7 @@ document.addEventListener('alpine:init', () => {
         id:8, cat:'Recovery Therapy', color:'#06B6D4', icon:'fa-snowflake',
         name:'Cryotherapy (Cold Air Therapy) Unit',
         brand:'Evercryo Medical',
-        img:'ToUseImgs/Cold%20Compression%20Therapy%20%28%20Cryotherapy%29.jpeg',
+        img:'assets/Cold%20Compression%20Therapy%20%28%20Cryotherapy%29.jpeg',
         desc:'Professional cold air cryotherapy system using refrigeration technology to rapidly reduce epidermal temperature. Precise targeting, constant dosage delivery, and 9 preset modes for acute and post-operative care.',
         specs:['Power: 1,600W refrigeration system','Lowest cooling temp: −35°C','Fan: 9 adjustable speed levels','3-time loop: 20/40/60 min cycles','9 preset treatment modes','No consumables — continuous day-use capable'],
       },
@@ -1519,7 +1539,7 @@ document.addEventListener('alpine:init', () => {
         id:9, cat:'Electrotherapy', color:'#8B5CF6', icon:'fa-brain',
         name:'EMG Biofeedback with FES, TENS, NMES & Gaming',
         brand:'Konmed+ / Verity Medical UK',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-09%20at%2012.01.52.jpeg',
+        img:'assets/WhatsApp%20Image%202026-05-09%20at%2012.01.52.jpeg',
         desc:'Konmed+ Biofeedback Stimulator — 2-channel EMG with 4-channel NMES/FES. EMG-Triggered Stimulation (ETS) for stroke and neurological rehab. Engaging biofeedback gaming software for motor re-learning.',
         specs:['2-channel EMG + 4-channel NMES/FES','EMG Triggered Stimulation (ETS) mode','10 EMG biofeedback games','TENS, NMES, FES & Mirror Therapy modes','Pelvic, Sport, Rehab & Swallow programs','4-channel independent intensity control'],
       },
@@ -1527,7 +1547,7 @@ document.addEventListener('alpine:init', () => {
         id:10, cat:'Recovery Therapy', color:'#3B82F6', icon:'fa-compress-arrows-alt',
         name:'Pneumatic Compression Therapy — 4 & 6 Chamber',
         brand:'Doctor Life · Korea',
-        img:'ToUseImgs/6%20Chamber%20Doctor%20Life%20Compression%20Therapy.jpeg',
+        img:'assets/6%20Chamber%20Doctor%20Life%20Compression%20Therapy.jpeg',
         desc:'Lx9 Sequential Intermittent Pneumatic Compression System (FDA-approved) for lymphoedema management, DVT prevention, oedema reduction, and sports recovery. Available in 4-chamber and 6-chamber garments.',
         specs:['4-chamber & 6-chamber garment options','Pressure range: 20–200 mmHg','Treatment time: up to 90 min','4 sequential massage programs (A–D)','Skip chamber function','FDA-approved medical device'],
       },
@@ -1535,7 +1555,7 @@ document.addEventListener('alpine:init', () => {
         id:11, cat:'Electrotherapy', color:'#0EA5E9', icon:'fa-broadcast-tower',
         name:'Tecar Therapy (448kHz)',
         brand:'India Tecar / Indiba',
-        img:'ToUseImgs/Tecar%20Therapy.jpeg',
+        img:'assets/Tecar%20Therapy.jpeg',
         desc:'448kHz Tecar (Transfer of Energy Capacitive and Resistive) for rapid deep tissue repair and pain management. Clinically proven for joint, muscle, and tendon recovery with thermogenic deep heating effect.',
         specs:['448kHz frequency technology (CE/CET & RET)','Capacitive & resistive energy modes','Deep tissue thermogenic heating','Reduces inflammation & joint stiffness','Sports injury & chronic pain recovery','Clinically validated outcomes'],
       },
@@ -1543,7 +1563,7 @@ document.addEventListener('alpine:init', () => {
         id:12, cat:'Robotic Rehab', color:'#6D28D9', icon:'fa-hand-paper',
         name:'Robotics Gloves — 1 Hand & 2 Hands',
         brand:'Advanced Robotics',
-        img:'ToUseImgs/2%20Hand%20Robotic%20Glaves.jpeg',
+        img:'assets/2%20Hand%20Robotic%20Glaves.jpeg',
         desc:'Pneumatic robotic rehabilitation gloves for post-stroke hand motor recovery. AI-assisted gripping exercises with EMG-triggered stimulation promote neuroplasticity and functional grip restoration for stroke and brain injury patients.',
         specs:['Single & dual hand configurations','Pneumatic actuation mechanism','EMG-triggered stimulation support','Stroke & brain injury rehabilitation','AI-assisted grip training protocols','Neuroplasticity-focused therapy design'],
       },
@@ -1551,7 +1571,7 @@ document.addEventListener('alpine:init', () => {
         id:13, cat:'Home Therapy', color:'#F59E0B', icon:'fa-home',
         name:'4-in-1 Combination Therapy — Home Visit',
         brand:'Healspring Physio',
-        img:'ToUseImgs/WhatsApp%20Image%202026-05-09%20at%2012.02.23.jpeg',
+        img:'assets/WhatsApp%20Image%202026-05-09%20at%2012.02.23.jpeg',
         desc:'Portable 4-in-1 TENS/EMS/IFT/RUSS device for in-home physiotherapy sessions. 60 preset programs across all four modalities, dual independent channels, and 0–120 mA intensity range. Complete carry case included.',
         specs:['4 modalities: TENS, EMS, IFT, RUSS','60 preset programs (23 TENS + 13 EMS + 8 IFT + 8 RUSS)','Dual channel independent control','Intensity: 0–120 mA (120 levels)','Timer: 5–90 minutes adjustable','Portable carry case + electrode kit'],
       },
@@ -1612,17 +1632,49 @@ document.addEventListener('alpine:init', () => {
         this.demoSubmitting = false;
       }
     },
-    submitContact() {
-      this.contactDone = true;
+    async submitContact() {
+      this.contactSubmitting = true;
+      this.contactError = '';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: '5e9f48cc-bb7c-4f97-bd73-a82d93951aa3',
+            subject: `Inquiry — ${this.contact.name} (${this.contact.city || 'Location not specified'})`,
+            from_name: this.contact.name,
+            replyto: this.contact.email || '',
+            Name: this.contact.name,
+            Clinic: this.contact.clinic || '—',
+            Phone: this.contact.phone,
+            Email: this.contact.email || '—',
+            City: this.contact.city || '—',
+            'Equipment Interest': this.contact.interest || 'General Inquiry',
+            Message: this.contact.message || '—',
+            botcheck: '',
+          }),
+        });
+        const data = await res.json();
+        if (data.success) {
+          this.contactDone = true;
+          this.contact = { name:'', clinic:'', phone:'', email:'', city:'', interest:'', message:'' };
+        } else {
+          this.contactError = 'Submission failed. Please try again or call us directly.';
+        }
+      } catch(e) {
+        this.contactError = 'Network error. Please check your connection and try again.';
+      } finally {
+        this.contactSubmitting = false;
+      }
     },
   }));
 });
 </script>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.14.1/dist/cdn.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" integrity="sha384-wziAfh6b/qT+3LrqebF9WeK4+J5sehS6FA10J1t3a866kJ/fvU5UwofWnQyzLtwu" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" integrity="sha384-2UI1PfnXFjVMQ7/ZDEF70CR943oH3v6uZrFQGGqJYlvhh4g6z6uVktxYbOlAczav" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.14.1/dist/cdn.min.js" integrity="sha384-NArNwzWsUSF+kY2lgW4YriEkjLqi+J+za6HrENUn/3nZqkBnWbxV22kCJEK5Uu6n" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js" integrity="sha384-l8f0VcPi/M1iHPv8egOnY/15TDwqgbOR1anMIJWvU6nLRgZVLTLSaNqi/TOoT5Fh" crossorigin="anonymous"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
