@@ -14,7 +14,7 @@
 <meta name="geo.region" content="IN-DL">
 <meta name="geo.placename" content="Delhi, India">
 <link rel="canonical" href="https://www.healspringphysiollp.in/">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.web3forms.com; frame-ancestors 'none';">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self' https://api.web3forms.com; frame-src https://www.google.com; frame-ancestors 'none';">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 <script type="application/ld+json">
@@ -30,6 +30,20 @@
       "url": "https://www.healspringphysiollp.in/",
       "email": "Healspringphysio@gmail.com",
       "telephone": ["+919009740116", "+919520241632"],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Makanpur, Nyay Khand III",
+        "addressLocality": "Indirapuram",
+        "addressRegion": "Uttar Pradesh",
+        "postalCode": "201014",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 28.6416939,
+        "longitude": 77.3596798
+      },
+      "hasMap": "https://maps.app.goo.gl/3GNprKtiAc3qFZMv5",
       "foundingDate": "2018",
       "areaServed": [
         "Delhi","Noida","Gurgaon","Faridabad","Ghaziabad",
@@ -1008,6 +1022,30 @@ tailwind.config = {
           Book a Demo
         </button>
       </div>
+
+      <!-- Office Location Map -->
+      <div class="mt-10 bg-slate-50 rounded-2xl overflow-hidden border border-slate-100" data-aos="fade-up" data-aos-delay="100">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-6 py-4 border-b border-slate-200">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-location-dot text-hs-blue"></i>
+            </div>
+            <div>
+              <p class="font-display font-bold text-navy text-sm">Our Office</p>
+              <p class="text-gray-400 text-xs">Makanpur, Nyay Khand III, Indirapuram, Ghaziabad — 201014</p>
+            </div>
+          </div>
+          <a href="https://maps.app.goo.gl/3GNprKtiAc3qFZMv5" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 text-xs font-bold text-hs-blue hover:text-navy transition flex-shrink-0">
+            <i class="fas fa-diamond-turn-right"></i> Get Directions
+          </a>
+        </div>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.54!2d77.3570951!3d28.6416939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfbab42378c9d%3A0x58d32f2f80d8733e!2sHealspring%20Physio%20LLP!5e0!3m2!1sen!2sin!4v1716800000000!5m2!1sen!2sin"
+          width="100%" height="300" style="border:0; display:block;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Healspring Physio LLP office location"></iframe>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1289,7 +1327,12 @@ tailwind.config = {
             <i class="fas fa-location-dot text-hs-cyan text-lg"></i>
           </div>
           <h3 class="font-display font-bold text-xl mb-0.5">Healspring Physio LLP</h3>
-          <p class="text-white/40 text-sm mb-5">Physiotherapy Equipment Distributors · Pan-India</p>
+          <p class="text-white/40 text-sm mb-4">Physiotherapy Equipment Distributors · Pan-India</p>
+          <a href="https://maps.app.goo.gl/3GNprKtiAc3qFZMv5" target="_blank" rel="noopener noreferrer"
+             class="flex items-start gap-3 mb-5 group">
+            <i class="fas fa-location-dot text-hs-cyan w-4 text-center mt-0.5 flex-shrink-0"></i>
+            <span class="text-white/70 text-sm leading-snug group-hover:text-white transition">Makanpur, Nyay Khand III,<br>Indirapuram, Ghaziabad — 201014</span>
+          </a>
 
           <a href="https://share.google/B3f509khfomi6Q3Zl" target="_blank" rel="noopener noreferrer"
              class="flex items-center gap-3 bg-white/8 hover:bg-white/15 border border-white/10 rounded-xl px-4 py-3 transition mb-3 group">
